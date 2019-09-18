@@ -29,9 +29,10 @@ a{
 
 body{
   background:url("../img/default-pattern.png");
-  font-family:Arial, sans-serif;
+  font-family:"Montserrat", Arial, sans-serif;
   font-size: 16px;
   width:100%;
+  position: relative;
 }
 
 /* 3 contents */
@@ -40,11 +41,95 @@ main{
   width:60%;
   margin:40px auto;
 }
-/* main:after{
-  content:"";
-  display:table;
-  clear:both;
-} Sostituito con la classe*/
+
+/* MODAL */
+.wrapperModal{
+  width:100%;
+  height: 100vh;
+  position:fixed;
+  top:0;
+  left:0;
+  background: rgba(0,0,0,0.8);
+  z-index:1
+}
+.closeBtn{
+  display: block;
+  width:30px;
+  height:30px;
+  position:absolute;
+  top:-40px;
+  right:-40px;
+  font-size: 10px
+}
+.closeBtn a:hover{
+    cursor: pointer
+}
+.closeBtn a:before,
+.closeBtn a:after{
+  content: "";
+  display: block;
+  height: 6px;
+  width: 100%;
+  border-radius: 3px;
+  position: absolute;
+  top:50%;
+  left:0;
+  transform: translateY(-50%);
+  background: white;
+  transform-origin: center center;
+
+}
+.closeBtn a:before{transform: rotate(45deg)}
+.closeBtn a:after{transform: rotate(-45deg)}
+
+/* FORM */
+.mainModal{
+  width:500px;
+  height:250px;
+  position: absolute;
+  top:50%;
+  left:50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  border-radius: 8px;
+  border:4px solid #ccc;
+  padding:10px 20px;
+
+}
+.mainModal form{
+  height: 100%;
+  background-image: url("../img/mac2x.png");
+  background-size: 50%;
+  background-repeat: no-repeat;
+  background-position: right bottom;
+}
+.mainModal>form>*{
+  display: block;
+  height:25px;
+  line-height: 25px;
+}
+.mainModal input[type="text"]{
+  border-radius: 8px;
+  border:1px solid #BFFFD5;
+  background: #BFFFD5;
+  width:200px;
+  padding-left:10px;
+}
+.mainModal input[type="text"]::placeholder{
+  font-size: 14px;
+  color:#ddd;
+}
+.mainModal input[type="submit"]{
+  margin-top:20px;
+  margin-left: 100px;
+  width:100px;
+  border-radius: 8px;
+  border:4px solid #BFFFD5;
+  line-height: 12px;
+}
+
+
+
 /* content */
 header,nav,section,aside,footer{
   float:left;
@@ -80,8 +165,9 @@ header h1{
   display: inline-block;
   font-size: 80px;
   font-weight: lighter;
-  border:4px solid white;
+  border:7px solid white;
   padding:5px 20px;
+  letter-spacing: 12px
 }
 header .subtitle{
   display:block;
@@ -96,27 +182,28 @@ header .subtitle{
 /* menu details */
 
 ul, li{float:left}
-ul{
+nav ul,
+footer ul{
   width:100%;
   height:50px;
   background: #666
 }
-li{
+nav li{
   width:14.25%;
   height:100%;
   font-size:13px;
   text-align: center;
   position: relative;
 }
-a{
+nav a{
   display:block;
   position: relative;
   top:50%;
   transform: translateY(-50%);
   color:white;
 }
-a:hover{color:black}
-a:after{
+nav a:hover{color:black; cursor: pointer;}
+nav a:after{
   content: "";
   display: block;
   position: absolute;
@@ -129,9 +216,10 @@ a:after{
   color:white;
   z-index: -1
 }
-a:hover:after{
+nav a:hover:after{
 background:lightgrey;
-color: black
+color: black;
+cursor: pointer;
 }
 
 /* sidebar details */
@@ -161,7 +249,7 @@ aside,section{
 .sidebar h2{
   margin-left: 8px;
   width:72%;
-  font-size: 30px;
+  font-size: 1.5vw;
   color:#444
 }
 /* section article */
